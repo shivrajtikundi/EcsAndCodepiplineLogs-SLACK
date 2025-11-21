@@ -1,5 +1,46 @@
-# EcsAndCodepiplineLogs-SLACK
-#lambda Code
+🚀 AWS Lambda – Slack Notifications for CodePipeline & ECS (With Auto Log Fetching)
+
+This Lambda function sends real-time Slack alerts for both AWS CodePipeline failures and ECS task failures, including automatically fetched CloudWatch logs.
+It works with:
+
+✅ CodePipeline failed stages
+
+✅ CodeBuild logs (auto-detected log group & stream)
+
+✅ ECS task STOPPED/failed logs
+
+✅ Slack Webhook URL
+
+Just deploy the Lambda, add the Slack Webhook, and set CloudWatch Event triggers.
+
+🔧 How It Works
+
+The Lambda listens to both:
+
+1. CodePipeline events
+
+Detects failed action
+
+Auto-extracts CodeBuild build-id
+
+Auto-detects log group + log stream
+
+Sends logs to Slack
+
+2. ECS Task State Change events
+
+Captures STOPPED/failed tasks
+
+Pulls logs from the corresponding CloudWatch log group
+
+Sends last log lines to Slack
+
+Everything is fully automatic — no manual log group names needed.
+
+📌 Lambda Code
+
+Do NOT modify this block. This is your final working version.
+
 #final code works with slack both ecs and pipeline logs works
 import json
 import boto3
